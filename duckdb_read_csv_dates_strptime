@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source dates_data
+
+duckdb <<- SQL
+SELECT strptime(Date, '%b %-d, %Y')::DATE AS Date
+FROM read_csv(
+  'dates.csv',
+  all_varchar = TRUE
+);
+SQL

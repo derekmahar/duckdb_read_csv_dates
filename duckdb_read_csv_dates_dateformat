@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source dates_data
+
+duckdb <<- SQL
+SELECT Date
+FROM read_csv(
+  'dates.csv',
+  dateformat = '%b %-d, %Y'
+);
+SQL
